@@ -1374,6 +1374,7 @@ struct malloc_stats {
 };
 
 typedef struct socketFds {
+    // fyz 最大支持绑定地址数为 16
     int fd[CONFIG_BINDADDR_MAX];
     int count;
 } socketFds;

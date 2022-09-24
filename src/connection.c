@@ -164,6 +164,11 @@ static void connSocketClose(connection *conn) {
 }
 
 static int connSocketWrite(connection *conn, const void *data, size_t data_len) {
+    printf("socket write 了什么：");
+    for (size_t i = 0; i < data_len; i++) {
+        printf("%c", ((char *)data)[i]);
+    }
+    printf("\n------\n");
     int ret = write(conn->fd, data, data_len);
     if (ret < 0 && errno != EAGAIN) {
         conn->last_errno = errno;
@@ -194,6 +199,11 @@ static int connSocketWritev(connection *conn, const struct iovec *iov, int iovcn
 }
 
 static int connSocketRead(connection *conn, void *buf, size_t buf_len) {
+    printf("socket read 了什么：");
+    for (size_t i = 0; i < buf_len; i++) {
+        printf("%c", ((char *)buf)[i]);
+    }
+    printf("\n-----\n");
     int ret = read(conn->fd, buf, buf_len);
     if (!ret) {
         conn->state = CONN_STATE_CLOSED;
