@@ -1941,7 +1941,7 @@ int main(int argc, char **argv) {
             free(cmd);
         }
 
-        if (test_is_selected("rpop")) {
+        if (test_is_selected("rpop")) {get
             len = redisFormatCommand(&cmd,"RPOP mylist%s",tag);
             benchmark("RPOP",cmd,len);
             free(cmd);

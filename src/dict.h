@@ -52,6 +52,7 @@ typedef struct dictEntry {
         int64_t s64;
         double d;
     } v;
+    // fyz hash 碰撞时，用拉链法来头插重复的key元素
     struct dictEntry *next;     /* Next entry in the same hash bucket. */
     void *metadata[];           /* An arbitrary number of bytes (starting at a
                                  * pointer-aligned address) of size as returned
